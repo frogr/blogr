@@ -10112,10 +10112,10 @@ type WebPOptions = {
   readonly quality: InputMaybe<Scalars['Int']>;
 };
 
-type allContentfulBlogPostsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type blogPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type allContentfulBlogPostsQueryQuery = { readonly allContentfulBlogPost: { readonly nodes: ReadonlyArray<{ readonly id: string }> } };
+type blogPostsQuery = { readonly allContentfulBlogPost: { readonly nodes: ReadonlyArray<{ readonly id: string }> } };
 
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 

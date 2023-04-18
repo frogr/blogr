@@ -90,34 +90,28 @@ const badgeStyle = {
   lineHeight: 1,
 };
 
-export const allContentfulQLQuery: any = () => {
-  graphql`
-    query allContentfulBlogPostsQuery {
-      allContentfulBlogPost(sort: { fields: createdAt, order: DESC }) {
-        nodes {
-          id
-        }
+export const allContentfulQLQuery = graphql`
+  query blogPosts {
+    allContentfulBlogPost(sort: { fields: createdAt, order: DESC }) {
+      nodes {
+        id
       }
     }
-  `;
-};
-
-const blogId: any = () => {
-  let id = allContentfulQLQuery;
-  return id;
-};
+  }
+`;
 
 const links = [
   {
     text: "austins blog is now live.",
     url: "/hello-world",
-    description: blogId,
+    description: allContentfulQLQuery + " 123",
     color: "#E95800",
   },
 ];
 
-const IndexPage: React.FC<PageProps> = () => {
-  console.log(blogId);
+const IndexPage: React.FC<PageProps> = ({ data }) => {
+  const { allContentfulBlogPost } = data;
+
   return (
     <main style={pageStyles}>
       <h1 style={headingStyles}>
@@ -156,6 +150,13 @@ const IndexPage: React.FC<PageProps> = () => {
           </li>
         ))}
       </ul>
+
+      <div>
+        <h1>Blog Posts</h1>
+        {allContentfulBlogPost.nodes.map((post) => (
+          <div key={post.id}>{post.id}</div>
+        ))}
+      </div>
     </main>
   );
 };
