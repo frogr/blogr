@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkaustin_blogs=self.webpackChunkaustin_blogs||[]).push([[7],{140:function(e,t,l){l.r(t);var n=l(7294);t.default=e=>{let{data:t}=e;const l=t.contentfulBlogPost;return n.createElement("div",null,n.createElement("h1",null,l.titleSlug),n.createElement("p",null,l.blogNumber))}}}]);
+//# sourceMappingURL=component---src-templates-blog-post-tsx-eb32a305fd7201269dcd.js.map

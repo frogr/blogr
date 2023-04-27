@@ -1,1 +1,1 @@
-{"componentChunkName":"component---src-pages-index-tsx","path":"/","result":{"data":{"allContentfulBlogPost":{"nodes":[{"id":"28ea2ffe-99a5-586a-b6cd-a022dc2f731a"}]}},"pageContext":{}},"staticQueryHashes":[],"slicesMap":{}}
+{"componentChunkName":"component---src-pages-index-tsx","path":"/","result":{"data":{"allContentfulBlogPost":{"edges":[{"node":{"titleSlug":"firstpost","blogNumber":1}}]}},"pageContext":{}},"staticQueryHashes":[],"slicesMap":{}}

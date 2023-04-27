@@ -1,5 +1,5 @@
 import * as React from "react";
-import { HeadFC, PageProps, graphql } from "gatsby";
+import { HeadFC, PageProps, graphql, Link } from "gatsby";
 
 const pageStyles = {
   color: "#232129",
@@ -90,77 +90,67 @@ const badgeStyle = {
   lineHeight: 1,
 };
 
-export const allContentfulQLQuery = graphql`
-  query blogPosts {
-    allContentfulBlogPost(sort: { fields: createdAt, order: DESC }) {
-      nodes {
-        id
+const links = [
+  {
+    text: "austins blog is now live.",
+    url: "/hello-world",
+    description: "123",
+    color: "#E95800",
+  },
+];
+
+export const pageQuery = graphql`
+  query {
+    allContentfulBlogPost {
+      edges {
+        node {
+          titleSlug
+          blogNumber
+        }
       }
     }
   }
 `;
 
-const links = [
-  {
-    text: "austins blog is now live.",
-    url: "/hello-world",
-    description: allContentfulQLQuery + " 123",
-    color: "#E95800",
-  },
-];
-
 const IndexPage: React.FC<PageProps> = ({ data }) => {
-  const { allContentfulBlogPost } = data;
+  if (!data || !data.allContentfulBlogPost) {
+    return <div>No posts found</div>;
+  }
+
+  const posts = data.allContentfulBlogPost.edges;
 
   return (
     <main style={pageStyles}>
+      <title> austin blogs </title>
       <h1 style={headingStyles}>
-        Heading Style
-        <br />
-        <span style={headingAccentStyles}>Heading Accent Style</span>
-      </h1>
-      <p style={paragraphStyles}>P Style</p>
-      <code style={codeStyles}>{"Code Style "}</code>
-      <ul style={doclistStyles}>
-        {docLinks.map((doc) => (
-          <li key={doc.url} style={docLinkStyle}>
-            <a
-              style={linkStyle}
-              href={`${doc.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}
-            >
-              {doc.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <ul style={listStyles}>
-        {links.map((link) => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a style={linkStyle} href={`${link.url}`}>
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
+        <div>
+          <div>Hi!</div>
+          <div>
+            I'm <span>Austin</span>
+          </div>
+          <div>
+            <span style={headingAccentStyles}>
+              I'm a software engineer from California
             </span>
-          </li>
-        ))}
-      </ul>
-
+          </div>
+        </div>
+      </h1>
       <div>
-        <h1>Blog Posts</h1>
-        {allContentfulBlogPost.nodes.map((post) => (
-          <div key={post.id}>{post.id}</div>
-        ))}
+        <h2>I think, therefore I write</h2>
+        <div>
+          {posts.map((post: any, index: any) => (
+            <div key={index}>
+              <Link to={`/blog/${post.node.titleSlug}`}>
+                {" "}
+                {/* Link to the blog post page */}
+                <h2>{post.node.titleSlug}</h2>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </main>
   );
 };
 
 export default IndexPage;
-
-export const Head: HeadFC = () => <title>austin blogs</title>;

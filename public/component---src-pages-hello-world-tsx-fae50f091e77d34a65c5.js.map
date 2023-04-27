@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-hello-world-tsx-fae50f091e77d34a65c5.js","mappings":"iHAEe,SAASA,IACtB,MAAO,aACT,C","sources":["webpack://austin-blogs/./src/pages/hello-world.tsx"],"sourcesContent":["import * as React from \"react\"\n\nexport default function Component () {\n  return \"Hello world\"\n}"],"names":["Component"],"sourceRoot":""}

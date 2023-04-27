@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkaustin_blogs=self.webpackChunkaustin_blogs||[]).push([[283],{6706:function(n,u,t){function e(){return"Hello world"}t.r(u),t.d(u,{default:function(){return e}})}}]);
+//# sourceMappingURL=component---src-pages-hello-world-tsx-fae50f091e77d34a65c5.js.map
